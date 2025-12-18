@@ -1,0 +1,1 @@
+{"version":3,"file":"protoethik.d.ts","sourceRoot":"","sources":["../../src/plugins/protoethik.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAE,iBAAiB,EAAE,MAAM,aAAa,CAAC;AAGjE,MAAM,MAAM,uBAAuB,GAAG;IACpC,OAAO,CAAC,EAAE,OAAO,CAAC,iBAAiB,CAAC,CAAC;CACtC,CAAC;AAEF,wBAAgB,gBAAgB,CAAC,OAAO,CAAC,EAAE,uBAAuB,GAAG,UAAU,CAW9E"}

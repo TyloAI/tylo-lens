@@ -1,0 +1,1 @@
+{"version":3,"file":"auto-trace.d.ts","sourceRoot":"","sources":["../../src/plugins/auto-trace.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAE,MAAM,aAAa,CAAC;AAE9C,MAAM,MAAM,sBAAsB,GAAG;IACnC;;OAEG;IACH,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB;;;OAGG;IACH,aAAa,CAAC,EAAE,OAAO,CAAC;CACzB,CAAC;AAEF,wBAAgB,eAAe,CAAC,OAAO,CAAC,EAAE,sBAAsB,GAAG,UAAU,CAmC5E"}
