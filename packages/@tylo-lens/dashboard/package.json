@@ -1,5 +1,5 @@
 {
-  "name": "@tylo-lens/dashboard",
+  "name": "@protoethik-ai/dashboard",
   "version": "0.0.0",
   "private": true,
   "description": "Tylo-Lens Dashboard (Next.js) — trace explorer, token analytics, latency monitoring, and compliance reports.",
@@ -12,8 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tylo-lens/core": "workspace:*",
-    "@tylo-lens/ui": "workspace:*",
+    "@protoethik-ai/core": "workspace:*",
+    "@protoethik-ai/ui": "workspace:*",
     "dexie": "^4.0.0",
     "next": "^15.0.0",
     "react": "^18.3.0",

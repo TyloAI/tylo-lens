@@ -1,4 +1,4 @@
-import type { LensTrace } from '@tylo-lens/core';
+import type { LensTrace } from '@protoethik-ai/core/browser';
 
 type Subscriber = (trace: LensTrace) => void;
 

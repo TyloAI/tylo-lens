@@ -1,8 +1,8 @@
 'use client';
 
-import type { LensTrace } from '@tylo-lens/core';
+import type { LensTrace } from '@protoethik-ai/core/browser';
 import { create } from 'zustand';
-import { getTraceDB } from '../lib/trace-db.js';
+import { getTraceDB } from '../lib/trace-db';
 
 type TracesState = {
   traces: LensTrace[];

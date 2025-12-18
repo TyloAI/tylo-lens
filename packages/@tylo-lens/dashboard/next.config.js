@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['@tylo-lens/ui', '@tylo-lens/core'],
+  transpilePackages: ['@protoethik-ai/ui', '@protoethik-ai/core'],
 };
 
 export default nextConfig;

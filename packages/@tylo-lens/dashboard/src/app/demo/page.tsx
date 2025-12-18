@@ -1,8 +1,8 @@
 'use client';
 
-import type { LensTrace } from '@tylo-lens/core';
-import { computeProtoethikTransparency } from '@tylo-lens/core';
-import { MetricCard, TraceGraph, TraceTable, useTraceStream } from '@tylo-lens/ui';
+import type { LensTrace } from '@protoethik-ai/core/browser';
+import { computeProtoethikTransparency } from '@protoethik-ai/core/browser';
+import { MetricCard, TraceGraph, TraceTable, useTraceStream } from '@protoethik-ai/ui';
 import { useEffect, useMemo, useState } from 'react';
 
 export default function DemoPage() {

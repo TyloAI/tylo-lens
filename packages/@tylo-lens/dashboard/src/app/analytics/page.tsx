@@ -1,9 +1,9 @@
 'use client';
 
-import { computeProtoethikTransparency } from '@tylo-lens/core';
-import { MetricCard } from '@tylo-lens/ui';
+import { computeProtoethikTransparency } from '@protoethik-ai/core/browser';
+import { MetricCard } from '@protoethik-ai/ui';
 import { useEffect, useMemo } from 'react';
-import { useTracesStore } from '../../store/traces.js';
+import { useTracesStore } from '../../store/traces';
 
 export default function AnalyticsPage() {
   const traces = useTracesStore((s) => s.traces);

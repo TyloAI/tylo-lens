@@ -1,7 +1,7 @@
 'use client';
 
 import Dexie, { type Table } from 'dexie';
-import type { LensTrace } from '@tylo-lens/core';
+import type { LensTrace } from '@protoethik-ai/core/browser';
 
 export type StoredTrace = {
   traceId: string;

@@ -1,4 +1,4 @@
-import { subscribe } from '../../../lib/trace-store.js';
+import { subscribe } from '../../../lib/trace-store';
 
 export const runtime = 'nodejs';
 

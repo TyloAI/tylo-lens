@@ -1,4 +1,4 @@
-import type { LensSpan, LensTrace } from '@tylo-lens/core';
+import type { LensSpan, LensTrace } from '@protoethik-ai/core/browser';
 
 export const runtime = 'nodejs';
 

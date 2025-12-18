@@ -1,5 +1,5 @@
-import type { LensTrace } from '@tylo-lens/core';
-import { addTrace } from '../../../lib/trace-store.js';
+import type { LensTrace } from '@protoethik-ai/core/browser';
+import { addTrace } from '../../../lib/trace-store';
 
 export async function POST(req: Request) {
   if (process.env.TYLO_LENS_READ_ONLY === '1' || process.env.TYLO_LENS_READ_ONLY === 'true') {

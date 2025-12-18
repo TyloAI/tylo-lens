@@ -1,10 +1,10 @@
 'use client';
 
-import type { LensTrace } from '@tylo-lens/core';
-import { computeClarityScore, computeProtoethikTransparency, generateComplianceReport } from '@tylo-lens/core';
-import { MetricCard, TraceGraph, TraceTable, useTraceStream } from '@tylo-lens/ui';
+import type { LensTrace } from '@protoethik-ai/core/browser';
+import { computeClarityScore, computeProtoethikTransparency, generateComplianceReport } from '@protoethik-ai/core/browser';
+import { MetricCard, TraceGraph, TraceTable, useTraceStream } from '@protoethik-ai/ui';
 import { useEffect, useMemo, useState } from 'react';
-import { useTracesStore } from '../store/traces.js';
+import { useTracesStore } from '../store/traces';
 
 function summarize(traces: LensTrace[]) {
   const allSpans = traces.flatMap((t) => t.spans);
