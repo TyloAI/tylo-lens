@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Glass + Cyber look */
+body {
+  background: radial-gradient(80% 60% at 50% 0%, rgba(110, 231, 255, 0.14), transparent 50%),
+    radial-gradient(80% 60% at 50% 100%, rgba(167, 139, 250, 0.12), transparent 50%),
+    #070a12;
+}
+

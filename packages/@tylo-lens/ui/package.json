@@ -1,0 +1,33 @@
+{
+  "name": "@tylo-lens/ui",
+  "version": "0.0.0",
+  "description": "Tylo-Lens UI (Glass): shared React components for traces, charts, and dashboards.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "src/styles"],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@tylo-lens/core": "workspace:*",
+    "dagre": "^0.8.5"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.6.0"
+  }
+}
