@@ -1,12 +1,12 @@
 {
-  "name": "@tylo-lens/example-basic-mcp",
+  "name": "@protoethik-ai/example-basic-mcp",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "@tylo-lens/core": "workspace:*"
+    "@protoethik-ai/core": "workspace:*"
   }
 }
 

@@ -1,9 +1,9 @@
 {
-  "name": "@tylo-lens/example-nextjs-ai-sdk",
+  "name": "@protoethik-ai/example-nextjs-ai-sdk",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@tylo-lens/core": "workspace:*"
+    "@protoethik-ai/core": "workspace:*"
   }
 }
 

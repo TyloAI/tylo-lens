@@ -8,6 +8,6 @@ It wraps a minimal MCP client-like object (with a `request(method, params)` func
 ## Run
 
 ```bash
-pnpm --filter @tylo-lens/example-basic-mcp start
+pnpm --filter @protoethik-ai/example-basic-mcp start
 ```
 

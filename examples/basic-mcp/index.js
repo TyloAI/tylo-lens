@@ -1,4 +1,4 @@
-import { TyloLens, consoleExporter, exporterPlugin, protoethikPlugin } from '@tylo-lens/core';
+import { TyloLens, consoleExporter, exporterPlugin, protoethikPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'basic-mcp', environment: 'dev' },

@@ -11,7 +11,7 @@ The idea:
 ## Example snippet
 
 ```ts
-import { TyloLens } from '@tylo-lens/core';
+import { TyloLens } from '@protoethik-ai/core';
 
 export async function POST(req: Request) {
   const lens = new TyloLens({ app: { name: 'my-nextjs-app', environment: 'dev' } });
