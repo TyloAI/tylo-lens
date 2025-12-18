@@ -1,145 +1,205 @@
-<div align="center">
+# Tylo-Lens
 
-# 🛡️ Tylo-Lens: The LLM Transparency Standard
+**Tylo-Lens** is a free, open-source **LLM transparency dashboard** for tracing call chains, token/cost usage, latency, and ethics signals — built for the MCP era.
 
+[![CI](https://github.com/tylo-lens/tylo-lens/actions/workflows/ci.yml/badge.svg)](https://github.com/tylo-lens/tylo-lens/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**A high-fidelity, privacy-first observability dashboard for the MCP & Agentic AI era.**
+## The Why (2025)
 
-[Quick Start](https://www.google.com/search?q=%23-quick-start) • [Architecture](https://www.google.com/search?q=%23-architecture) • [Packages](https://www.google.com/search?q=%23-monorepo-structure) • [Compliance](https://www.google.com/search?q=%23-protoethik-transparency-score)
+LLM applications are becoming **agentic**: models call tools, tools call models, workflows branch and retry, and costs explode silently.
 
-</div>
+Without transparency, teams ship **black boxes**:
 
----
+- Prompt / tool misuse is hard to audit
+- PII leaks are easy to miss
+- Token spend becomes unbounded
+- Latency regressions hide behind “it feels slow”
 
-## 🚀 The Why (2025)
+Tylo-Lens makes LLM systems **observable, explainable, and auditable**.
 
-In the era of **Agentic AI**, LLM applications are no longer simple prompt-response loops. They are complex ecosystems where models call tools, tools call models, and workflows branch dynamically.
+Two open-source AI trends make this inevitable:
 
-Without transparency, you are shipping **black boxes**:
+1. **Ecosystem standardization** — common interfaces, portable tooling.
+2. **Agent collaboration** — multi-agent orchestration across models/tools.
 
-* **Prompt/Tool Misuse**: Hard to audit in multi-step chains.
-* **PII Leakage**: Sensitive data easily slips into logs.
-* **Token Spend**: Costs explode silently in runaway loops.
-* **Latency Debts**: Regressions hide behind "it just feels slow".
+The **MCP (Model Context Protocol)** pushes agent↔tool↔model integration toward standard interfaces. Tylo-Lens is **MCP-ready** and **vendor-agnostic**.
 
-**Tylo-Lens** makes LLM systems **observable, explainable, and auditable** by default.
+## What you get
 
----
+- **Call-chain visualization**: who called which model, with which prompt, and what came back.
+- **Token + cost analytics**: token usage, cost estimates, per-model breakdown.
+- **Latency monitoring**: response time histograms and p95/p99 tracking.
+- **Safety & compliance reporting**: lightweight PII signals + audit-friendly reports.
 
-## ✨ Key Features
+## One-click experience
 
-* **🌐 Call-Chain Visualization**: Interactive TraceGraphs showing model/tool topology.
-* **📊 Token & Cost Analytics**: Real-time breakdown of per-model usage and costs.
-* **⏱️ Latency Monitoring**: p95/p99 tracking and response time histograms.
-* **🛡️ Protoethik Safety**: Built-in PII signals and automated transparency scoring.
-* **🔌 MCP-Ready**: Native support for the **Model Context Protocol**.
+Deploy your own dashboard in ~1 minute.
 
----
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/<YOUR_GITHUB_ORG>/tylo-lens/tree/main/@protoethik-ai/protoethik-ai/dashboard)
 
-## 🏗️ Monorepo Structure
+> If Vercel asks: set the **Root Directory** to `@protoethik-ai/protoethik-ai/dashboard`.
 
-Tylo-Lens is built as a modular monorepo for maximum flexibility:
+## Live demo (read-only)
 
-```text
-tylo-lens/
-├── packages/
-│   ├── @tylo-lens/core        # The "Inspector": Interceptors & Collectors
-│   ├── @tylo-lens/ui          # "Glass" Design System: Shared React primitives
-│   ├── @tylo-lens/dashboard   # Next.js Trace Explorer & Analytics
-│   └── @tylo-lens/provider-* # Community adapters (Ollama, DeepSeek, etc.)
-├── examples/                  # Integration recipes (Vanilla, Next.js, MCP)
-├── docs/                      # Technical & Compliance documentation
-├── rfcs/                      # Protocol & Schema evolution proposals
-└── scripts/                   # CLI & Validation utilities
+We maintain a **read-only** demo that streams synthetic traces so you can see the TraceGraph flow effects before downloading anything:
 
-```
+- Demo: `https://demo.tylo-lens.dev` (placeholder)
 
----
+The demo is protected via an optional token gate (middleware). To self-host the same experience:
 
-## 🔌 Architecture
+- set `TYLO_LENS_READ_ONLY=1` to disable ingestion
+- set `TYLO_LENS_DEMO_TOKEN=...` to require `?token=...` once (stored in a cookie)
 
-Tylo-Lens uses a **thin SDK + rich dashboard** approach to minimize performance overhead.
+## Architecture (high-level)
 
 ```mermaid
 flowchart LR
-  A[Your App / Agent] --> B[@tylo-lens/core\nInspector]
+  A[Your App / Agent] --> B[@protoethik-ai/core\nInspector]
   B --> C[Trace JSON\n(LensTrace)]
   C --> D[Dashboard API\nPOST /api/ingest]
-  D --> E[@tylo-lens/dashboard\nNext.js]
-  E --> F[@tylo-lens/ui\nGlass components]
-
+  D --> E[@protoethik-ai/dashboard\nNext.js]
+  E --> F[@protoethik-ai/ui\nGlass components]
 ```
 
----
+## Plugin-first engine
 
-## ⚡ Quick Start
+Tylo-Lens core is designed around plugins:
 
-### 1. Deploy the Dashboard
+- **Providers**: Ollama, OpenAI-compatible gateways (DeepSeek, etc), local Llama stacks…
+- **Exporters**: Slack/Discord webhooks, files, custom storage, CI artifacts…
 
-Deploy your own instance in seconds via Vercel:
+### Minimal “drop-in” setup
 
-*Set the **Root Directory** to `packages/@tylo-lens/dashboard`.*
-
-### 2. Install the SDK
-
-```bash
-pnpm add @tylo-lens/core
-
-```
-
-### 3. Initialize the Inspector
-
-"Drop-in" setup for automatic network and agent tracing:
+This gives you a **low-friction** starting point: patch `fetch` (and optionally XHR), auto-create traces, and export them to the dashboard.
 
 ```ts
-import { 
-  TyloLens, 
-  networkInstrumentationPlugin, 
-  autoTracePlugin 
-} from '@tylo-lens/core';
+import {
+  TyloLens,
+  autoTracePlugin,
+  exporterPlugin,
+  networkInstrumentationPlugin,
+  protoethikPlugin,
+  webhookExporter,
+} from '@protoethik-ai/core';
 
 const lens = new TyloLens({
-  app: { name: 'my-agent', environment: 'prod' },
+  app: { name: 'my-app', environment: 'dev' },
   plugins: [
-    networkInstrumentationPlugin({ fetch: true, xhr: true }), //
-    autoTracePlugin({ idleMs: 1500 }) // Auto-close traces on idle
+    networkInstrumentationPlugin({
+      fetch: true,
+      xhr: true,
+      // avoid tracing the exporter itself
+      shouldTraceUrl: (url) => !url.includes('/api/ingest'),
+    }),
+    autoTracePlugin({ idleMs: 1500, flushOnExport: true }),
+    protoethikPlugin(),
+    exporterPlugin(webhookExporter({ url: 'http://localhost:3000/api/ingest' })),
   ],
 });
-
 ```
 
----
+## Packages
 
-## ⚖️ Protoethik Transparency Score
+- `@protoethik-ai/core` — The Inspector (interceptors + collectors + ethics checks)
+- `@protoethik-ai/ui` — Shared UI components (Glass design system)
+- `@protoethik-ai/dashboard` — Next.js dashboard (App Router)
+- `@protoethik-ai/provider-openai-compatible` — Provider wrapper for OpenAI-compatible APIs
+- `@protoethik-ai/provider-ollama` — Provider wrapper for local Ollama
 
-Tylo-Lens includes a standardized score derived from the **Protoethik** rules to measure application clarity and risk.
+## Quick start (local)
 
-The score (0–100) helps human auditors quickly identify high-risk traces.
+```bash
+pnpm install
+pnpm dev
+```
 
----
+Then open `http://localhost:3000`.
 
-## 🧪 Examples
+## Ingestion
 
-* **[Vanilla JS](https://www.google.com/search?q=./examples/vanilla-js)**: Pure Node.js/Browser usage.
-* **[Basic MCP](https://www.google.com/search?q=./examples/basic-mcp)**: Wrapping MCP-style `request` calls.
-* **[Next.js + AI SDK](https://www.google.com/search?q=./examples/nextjs-ai-sdk)**: Integration with modern AI toolkits.
+The dashboard exposes:
 
----
+- `POST /api/ingest` — ingest a `LensTrace`
+- `GET /api/stream` — SSE stream of ingested traces
 
-## 🤝 Governance & Security
+Example:
 
-* **RFC Process**: All breaking changes to `LensTrace` schema go through `rfcs/`.
-* **PII Safety**: Built-in redaction (mask/hash) before data leaves the SDK.
-* **Auditing**: Audit-friendly reports generated per-trace.
+```bash
+curl -X POST http://localhost:3000/api/ingest \
+  -H 'content-type: application/json' \
+  -d '{"traceId":"demo","app":{"name":"demo"},"startedAt":"2025-01-01T00:00:00.000Z","spans":[]}'
+```
 
----
+## SDK usage (example)
 
-## 📜 License
+```ts
+import { TyloLens } from '@protoethik-ai/core';
 
-MIT © 2025 Tylo-Lens
+const lens = new TyloLens({
+  app: { name: 'my-app', environment: 'dev' },
+});
 
----
+// Wrap a model call (works with any LLM client)
+const run = lens.wrapLLM('openai:gpt-4.1', async () => {
+  return { outputText: 'hello', usage: { inputTokens: 10, outputTokens: 12 } };
+});
 
-**Built with ❤️ by the Protoethik Community.**
+await run({ prompt: 'Say hello' });
+console.log(lens.exportTrace());
+```
 
----
+## Protoethik transparency score
+
+Tylo-Lens includes a lightweight transparency score inspired by the **Protoethik** rules:
+
+```
+T_score = (Σ(C_clarity · W_c) − Σ(P_pii · W_p)) / T_tokens
+```
+
+The dashboard shows:
+
+- `T-score (0–100)` for human-friendly scanning
+- the raw score + breakdown for auditing
+
+## CLI (trace validation)
+
+Tylo-Lens ships a small CLI to validate trace payloads:
+
+```bash
+node @protoethik-ai/protoethik-ai/cli/bin/tylo-lens.js validate ./my-trace.json
+```
+
+## Examples
+
+- `examples/vanilla-js` — no framework
+- `examples/basic-mcp` — wrap MCP-style `request(method, params)`
+- `examples/nextjs-ai-sdk` — conceptual Next.js + AI SDK integration
+
+## Hall of Fame (coming soon)
+
+Community-made plugins will live here:
+
+- Provider plugins (Ollama, DeepSeek, local inference)
+- Exporters (Slack/Discord, files, databases)
+- Visualization extensions (custom node types, layouts)
+
+Want to be listed? Ship a plugin and open a PR.
+
+## Security & privacy
+
+Tylo-Lens can capture prompts/outputs, which may contain sensitive data.
+
+- Use PII redaction and retention controls in production.
+- Add auth to ingestion endpoints.
+- Prefer server-side ingestion (avoid exposing raw traces to browsers).
+
+## Governance
+
+- RFCs: `rfcs/README.md`
+- Issue templates: `.github/ISSUE_TEMPLATE`
+- Protoethik draft rules: `.github/linters/protoethik.rules.md`
+
+## License
+
+MIT

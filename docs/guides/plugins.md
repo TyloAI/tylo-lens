@@ -4,7 +4,7 @@ Tylo-Lens is designed as a **plugin-first** engine.
 
 The core goal is simple:
 
-- keep `@tylo-lens/core` stable and minimal
+- keep `@protoethik-ai/core` stable and minimal
 - let the community ship **providers** (Ollama / DeepSeek / local inference / gateways)
 - let the community ship **exporters** (Slack / Discord / files / databases / CI artifacts)
 
@@ -26,7 +26,7 @@ The plugin API is intentionally lightweight: it’s “just JavaScript” with a
 ## Plugin API (deep dive)
 
 ```ts
-import type { LensPlugin } from '@tylo-lens/core';
+import type { LensPlugin } from '@protoethik-ai/core';
 
 export const myPlugin: LensPlugin = {
   name: 'my-plugin',
@@ -71,7 +71,7 @@ Each event includes the active `trace`, and span events include `span`.
 Exporters are the simplest way to contribute. An exporter is:
 
 ```ts
-import type { LensExporter } from '@tylo-lens/core';
+import type { LensExporter } from '@protoethik-ai/core';
 
 export const myExporter: LensExporter = {
   name: 'my-exporter',
@@ -84,7 +84,7 @@ export const myExporter: LensExporter = {
 ### Option A: install exporter directly
 
 ```ts
-import { TyloLens } from '@tylo-lens/core';
+import { TyloLens } from '@protoethik-ai/core';
 import { myExporter } from './my-exporter';
 
 const lens = new TyloLens({
@@ -96,7 +96,7 @@ const lens = new TyloLens({
 ### Option B: register exporter via plugin
 
 ```ts
-import { TyloLens, exporterPlugin } from '@tylo-lens/core';
+import { TyloLens, exporterPlugin } from '@protoethik-ai/core';
 import { myExporter } from './my-exporter';
 
 const lens = new TyloLens({
@@ -108,7 +108,7 @@ const lens = new TyloLens({
 ### Example: exporting to the Tylo-Lens dashboard
 
 ```ts
-import { TyloLens, exporterPlugin, webhookExporter } from '@tylo-lens/core';
+import { TyloLens, exporterPlugin, webhookExporter } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'my-app' },
@@ -136,7 +136,7 @@ Providers should be thin wrappers around an API client. The pattern:
 ### Provider skeleton
 
 ```ts
-import type { TyloLens } from '@tylo-lens/core';
+import type { TyloLens } from '@protoethik-ai/core';
 
 export type MyProviderOptions = {
   lens: TyloLens;
@@ -161,12 +161,12 @@ export function createMyProvider(opts: MyProviderOptions) {
 
 Create a new workspace package:
 
-- `packages/@tylo-lens/provider-<name>/package.json`
-- `packages/@tylo-lens/provider-<name>/src/index.ts`
+- `@protoethik-ai/protoethik-ai/provider-<name>/package.json`
+- `@protoethik-ai/protoethik-ai/provider-<name>/src/index.ts`
 
 Naming:
 
-- npm package: `@tylo-lens/provider-ollama`
+- npm package: `@protoethik-ai/provider-ollama`
 - model strings: `ollama:<model>` or `openai-compatible:<model>`
 
 ---
@@ -178,7 +178,7 @@ Instrumentation plugins patch global interfaces so apps can integrate with minim
 Example: patch `fetch` / XHR in one line:
 
 ```ts
-import { TyloLens, networkInstrumentationPlugin } from '@tylo-lens/core';
+import { TyloLens, networkInstrumentationPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'my-app' },
@@ -198,7 +198,7 @@ const lens = new TyloLens({
 If you want the dashboard UI (`useTraceStream`) to update while a stream is still in-flight, use the realtime webhook plugin:
 
 ```ts
-import { TyloLens, networkInstrumentationPlugin, realtimeWebhookPlugin } from '@tylo-lens/core';
+import { TyloLens, networkInstrumentationPlugin, realtimeWebhookPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'my-app' },
@@ -218,7 +218,7 @@ By default, Tylo-Lens uses a dependency-free heuristic (`estimateTokens()`).
 If you need accurate counts, enable the optional tiktoken plugin:
 
 ```ts
-import { TyloLens, tiktokenTokenizerPlugin } from '@tylo-lens/core';
+import { TyloLens, tiktokenTokenizerPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'my-app' },

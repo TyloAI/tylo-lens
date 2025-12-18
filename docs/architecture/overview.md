@@ -2,9 +2,9 @@
 
 Tylo-Lens follows a **thin SDK + dashboard** approach:
 
-- `@tylo-lens/core` collects telemetry (traces/spans, tokens, cost, latency).
-- `@tylo-lens/dashboard` visualizes and stores telemetry.
-- `@tylo-lens/ui` provides shared UI primitives for trace exploration.
+- `@protoethik-ai/core` collects telemetry (traces/spans, tokens, cost, latency).
+- `@protoethik-ai/dashboard` visualizes and stores telemetry.
+- `@protoethik-ai/ui` provides shared UI primitives for trace exploration.
 
 ## Why MCP matters
 

@@ -9,13 +9,13 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "changeset publish",
-    "validate:trace": "node packages/@tylo-lens/cli/bin/tylo-lens.js validate",
+    "validate:trace": "node packages/@protoethik-ai/cli/bin/tylo-lens.js validate",
     "lint": "pnpm -r lint",
     "format": "prettier . --check",
     "format:write": "prettier . --write",
     "test": "pnpm -r test",
     "build": "pnpm -r build",
-    "dev": "pnpm --filter @tylo-lens/dashboard dev"
+    "dev": "pnpm --filter @protoethik-ai/dashboard dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",

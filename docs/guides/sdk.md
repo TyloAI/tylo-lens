@@ -1,4 +1,4 @@
-# SDK guide (`@tylo-lens/core`)
+# SDK guide (`@protoethik-ai/core`)
 
 The SDK is designed for **transparent, vendor-agnostic** instrumentation.
 
@@ -12,7 +12,7 @@ The SDK is designed for **transparent, vendor-agnostic** instrumentation.
 Tylo-Lens supports a plugin system so the community can add providers/exporters without modifying the core engine.
 
 ```ts
-import { TyloLens, consoleExporter, exporterPlugin, protoethikPlugin } from '@tylo-lens/core';
+import { TyloLens, consoleExporter, exporterPlugin, protoethikPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'my-app', environment: 'dev' },
@@ -23,7 +23,7 @@ const lens = new TyloLens({
 ## Wrap an LLM call
 
 ```ts
-import { TyloLens } from '@tylo-lens/core';
+import { TyloLens } from '@protoethik-ai/core';
 
 const lens = new TyloLens({ app: { name: 'my-app', environment: 'dev' } });
 
@@ -41,7 +41,7 @@ console.log(lens.exportTrace());
 If you want a “one line” demo integration, you can patch `fetch` and auto-close traces by idle timeout:
 
 ```ts
-import { TyloLens, autoTracePlugin, networkInstrumentationPlugin } from '@tylo-lens/core';
+import { TyloLens, autoTracePlugin, networkInstrumentationPlugin } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
   app: { name: 'demo' },
@@ -55,7 +55,7 @@ Tylo-Lens does not depend on a specific MCP client implementation.
 It supports a simple interface: `request(method, params)`.
 
 ```ts
-import { TyloLens, wrapMCPClient } from '@tylo-lens/core';
+import { TyloLens, wrapMCPClient } from '@protoethik-ai/core';
 
 const lens = new TyloLens({ app: { name: 'my-agent' } });
 const trace = lens.startTrace();
