@@ -1,6 +1,6 @@
 'use client';
 
-import type { LensSpan } from '@tylo-lens/core';
+import type { LensSpan } from '@protoethik-ai/core';
 
 type TraceTableProps = {
   spans: LensSpan[];

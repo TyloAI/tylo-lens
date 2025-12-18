@@ -1,4 +1,4 @@
-import type { TyloLens } from '@tylo-lens/core';
+import type { TyloLens } from '@protoethik-ai/core';
 
 export type OpenAICompatibleChatMessage = {
   role: 'system' | 'user' | 'assistant' | 'tool' | (string & {});

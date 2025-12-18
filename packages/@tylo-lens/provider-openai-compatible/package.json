@@ -1,5 +1,5 @@
 {
-  "name": "@tylo-lens/provider-openai-compatible",
+  "name": "@protoethik-ai/provider-openai-compatible",
   "version": "0.0.0",
   "description": "OpenAI-compatible provider wrapper for Tylo-Lens (works with OpenAI, DeepSeek, and other compatible gateways).",
   "license": "MIT",
@@ -14,7 +14,7 @@
   },
   "files": ["dist"],
   "dependencies": {
-    "@tylo-lens/core": "workspace:*"
+    "@protoethik-ai/core": "workspace:*"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -1,5 +1,5 @@
 {
-  "name": "@tylo-lens/cli",
+  "name": "@protoethik-ai/cli",
   "version": "0.0.0",
   "description": "Tylo-Lens CLI tools (trace validator, utilities).",
   "license": "MIT",

@@ -1,0 +1,1 @@
+{"version":3,"file":"use-trace-stream.d.ts","sourceRoot":"","sources":["../../src/hooks/use-trace-stream.ts"],"names":[],"mappings":"AAIA,MAAM,MAAM,kBAAkB,GAAG;IAC/B,GAAG,CAAC,EAAE,MAAM,CAAC;CACd,CAAC;AAEF,KAAK,gBAAgB,GAAG;IACtB,IAAI,EAAE,OAAO,CAAC;IACd,OAAO,EAAE,OAAO,CAAC;CAClB,CAAC;AAEF,wBAAgB,cAAc,CAAC,OAAO,CAAC,EAAE,kBAAkB;;;;EAuC1D"}
