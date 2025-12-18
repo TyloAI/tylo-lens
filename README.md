@@ -1,205 +1,223 @@
-# Tylo-Lens
+<div align="center">
 
-**Tylo-Lens** is a free, open-source **LLM transparency dashboard** for tracing call chains, token/cost usage, latency, and ethics signals — built for the MCP era.
+# 🛡️ Tylo-Lens: The LLM Observability Platform
 
-[![CI](https://github.com/tylo-lens/tylo-lens/actions/workflows/ci.yml/badge.svg)](https://github.com/tylo-lens/tylo-lens/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+**Enterprise-Grade Monitoring & Explainability for the Agentic AI Stack**
 
-## The Why (2025)
+[![NPM Version](https://img.shields.io/npm/v/@protoethik-ai/core?style=for-the-badge&color=blue)](https://www.npmjs.com/package/@protoethik-ai/core)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Documentation](https://img.shields.io/badge/Docs-Read%20Now-orange?style=for-the-badge)](docs)
 
-LLM applications are becoming **agentic**: models call tools, tools call models, workflows branch and retry, and costs explode silently.
+</div>
 
-Without transparency, teams ship **black boxes**:
+  <div align="center">
+  
+  ## 📊 Visualize Every Interaction • 🛡️ Protect Every Token • ⚡ Audit Every Decision
+  
+  **The Complete Observability Stack for LLM Applications — From Prompt to Production**
+  
+  </div>
 
-- Prompt / tool misuse is hard to audit
-- PII leaks are easy to miss
-- Token spend becomes unbounded
-- Latency regressions hide behind “it feels slow”
+  <br>
+  
+  <div align="center">
+  
+  ### **✨ Why Developers Choose Tylo-Lens**
+  
+  [🚀 **One-Line Integration**](#-install-in-seconds) • [📈 **Real-Time Analytics**](#-why-tylo-lens) • 
+  [🔍 **Trace Any LLM Call**](#-project-structure) • [💰 **Cost Intelligence**](#-protoethik-transparency-score)
+  
+  </div>
+  
+  ---
 
-Tylo-Lens makes LLM systems **observable, explainable, and auditable**.
+  <div align="center">
+  
+  ### **⚡ Get Started in 30 Seconds**
+  
+  ```bash
+  npm install @protoethik-ai/core
+  # or
+  pnpm add @protoethik-ai/core
+  # or
+  yarn add @protoethik-ai/core
+  ```
+  </div>
 
-Two open-source AI trends make this inevitable:
+  <br>
+  
+  ---
+  
+  ### **📦 What's Inside the Platform?**
+  
+  | Component | Purpose | Status |
+  |-----------|---------|--------|
+  | **@protoethik-ai/core** | Core SDK for intercepting LLM calls | ✅ Production Ready |
+  | **@protoethik-ai/dashboard** | Real-time monitoring dashboard | 🚀 Beta |
+  | **@protoethik-ai/ui** | React components for embedding | ✅ Stable |
+  | **Providers (OpenAI, Claude, etc.)** | Native integrations | ✅ Complete |
+  
+  ---
+  
+  <div align="center">
+  
+  ### **🚀 Join the Protoethik ecosystem**
+  
+  [**TyloAI**](https://tyloai.com) • [**View Docs**](https://docs.tyloai.com) • [**API - Beta**](https://platform.tyloai.com) • [**Star on GitHub**](https://github.com/TyloAI) • [**ode-code CLI**](https://docs.tyloai.com/ode-code.html)
+  
+  </div>
 
-1. **Ecosystem standardization** — common interfaces, portable tooling.
-2. **Agent collaboration** — multi-agent orchestration across models/tools.
+</div>
 
-The **MCP (Model Context Protocol)** pushes agent↔tool↔model integration toward standard interfaces. Tylo-Lens is **MCP-ready** and **vendor-agnostic**.
+---
 
-## What you get
+## 🚀 Why Tylo-Lens? (2025)
 
-- **Call-chain visualization**: who called which model, with which prompt, and what came back.
-- **Token + cost analytics**: token usage, cost estimates, per-model breakdown.
-- **Latency monitoring**: response time histograms and p95/p99 tracking.
-- **Safety & compliance reporting**: lightweight PII signals + audit-friendly reports.
+In the era of **Agentic AI**, LLM applications have evolved beyond simple input-output models. The dynamic interactions—models invoking tools, tools feeding back to models, and workflows branching in real-time—have rendered systems into opaque "black boxes."
 
-## One-click experience
+**Tylo-Lens** provides **Observability, Explainability, and Auditability** for LLM systems:
 
-Deploy your own dashboard in ~1 minute.
+*   **Invocation Chain Visualization**: Tracks the interaction topology across multi-level Agents and Tools.
+*   **Token & Cost Analysis**: Real-time computation of consumption per model and per process stage.
+*   **Compliance & Privacy Auditing**: Built-in PII (Personally Identifiable Information) scanning and audit report generation.
+*   **MCP Protocol Ready**: Native support for the Model Context Protocol introduced by Anthropic.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/<YOUR_GITHUB_ORG>/tylo-lens/tree/main/@protoethik-ai/protoethik-ai/dashboard)
+---
 
-> If Vercel asks: set the **Root Directory** to `@protoethik-ai/protoethik-ai/dashboard`.
+## 🏗️ Project Structure (Monorepo)
 
-## Live demo (read-only)
+Tylo-Lens adopts a modular monorepo architecture, ensuring you can integrate only the components you require.
 
-We maintain a **read-only** demo that streams synthetic traces so you can see the TraceGraph flow effects before downloading anything:
+```text
+tylo-lens/
+├── .github/                   # GitHub Actions, Issue Templates, PR Templates
+│   ├── workflows/             # CI/CD pipelines (Test, Build, Release)
+│   └── linters/               # Custom linting rules for Protoethik standards
+├── packages/                  # Monorepo workspaces
+│   ├── @protoethik-ai/core/       # The "Inspector" - Pure JS logic to intercept MCP/LLM calls
+│   │   ├── src/
+│   │   │   ├── interceptors/  # Logic for wrapping fetch/XHR/MCP-protocol
+│   │   │   ├── collectors/    # Logic for gathering tokens, latency, and costs
+│   │   │   ├── ethics/        # PII detection & compliance checking algorithms
+│   │   │   └── index.ts       # Main entry point for the SDK
+│   │   ├── tests/             # Unit tests for the core engine
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── @protoethik-ai/ui/         # Shared UI components (The "Glass" design system)
+│   │   ├── src/
+│   │   │   ├── components/    # Atomic components (Nodes, Charts, Traces)
+│   │   │   ├── hooks/         # React hooks for real-time data streaming
+│   │   │   ├── styles/        # Tailwind config & global CSS (The "Cyber" look)
+│   │   │   └── theme/         # Design tokens (Colors, Spacing, Typography)
+│   │   └── package.json
+│   └── @protoethik-ai/dashboard/  # The main Next.js application
+│       ├── src/
+│       │   ├── app/           # App Router (Dashboard, Settings, Analytics)
+│       │   ├── lib/           # Dashboard-specific logic (Data persistence)
+│       │   └── store/         # State management (Zustand/Signals)
+│       ├── public/            # High-res assets, Logos, Icons
+│       └── package.json
+├── examples/                  # Integration examples for developers
+│   ├── basic-mcp/             # How to use Tylo-Lens with a standard MCP server
+│   ├── nextjs-ai-sdk/         # Integration with Vercel AI SDK
+│   └── vanilla-js/            # Integration without any framework
+├── docs/                      # Documentation (Docusaurus or Mintlify source)
+│   ├── architecture/          # Deep dive into how Tylo-Lens works
+│   ├── compliance/            # Ethics and Transparency standards documentation
+│   └── guides/                # Getting started and advanced usage
+├── scripts/                   # Internal build and maintenance scripts
+├── .gitignore
+├── .prettierrc
+├── .eslintrc.js
+├── lerna.json / pnpm-workspace.yaml
+├── CHANGELOG.md               # Auto-generated by Changesets
+├── CONTRIBUTING.md            # Guidelines for community
+├── LICENSE                    # Open-source license (e.g., MIT or Apache 2.0)
+├── README.md                  # The masterpiece landing page
+└── package.json               # Root scripts (build, lint, test-all)
 
-- Demo: `https://demo.tylo-lens.dev` (placeholder)
-
-The demo is protected via an optional token gate (middleware). To self-host the same experience:
-
-- set `TYLO_LENS_READ_ONLY=1` to disable ingestion
-- set `TYLO_LENS_DEMO_TOKEN=...` to require `?token=...` once (stored in a cookie)
-
-## Architecture (high-level)
-
-```mermaid
-flowchart LR
-  A[Your App / Agent] --> B[@protoethik-ai/core\nInspector]
-  B --> C[Trace JSON\n(LensTrace)]
-  C --> D[Dashboard API\nPOST /api/ingest]
-  D --> E[@protoethik-ai/dashboard\nNext.js]
-  E --> F[@protoethik-ai/ui\nGlass components]
 ```
 
-## Plugin-first engine
+---
 
-Tylo-Lens core is designed around plugins:
+## ⚡ Quick Start
 
-- **Providers**: Ollama, OpenAI-compatible gateways (DeepSeek, etc), local Llama stacks…
-- **Exporters**: Slack/Discord webhooks, files, custom storage, CI artifacts…
+### 1. Install the Core SDK
 
-### Minimal “drop-in” setup
+You can install the production-optimized package directly from NPM:
 
-This gives you a **low-friction** starting point: patch `fetch` (and optionally XHR), auto-create traces, and export them to the dashboard.
+```bash
+pnpm add @protoethik-ai/core
+```
 
-```ts
+### 2. Initialize the Inspector
+
+Configure the interceptor at your application's entry point to enable automatic data collection:
+
+```typescript
 import {
   TyloLens,
-  autoTracePlugin,
-  exporterPlugin,
   networkInstrumentationPlugin,
-  protoethikPlugin,
-  webhookExporter,
+  autoTracePlugin
 } from '@protoethik-ai/core';
 
 const lens = new TyloLens({
-  app: { name: 'my-app', environment: 'dev' },
+  app: { name: 'my-agent-service', environment: 'production' },
   plugins: [
-    networkInstrumentationPlugin({
-      fetch: true,
-      xhr: true,
-      // avoid tracing the exporter itself
-      shouldTraceUrl: (url) => !url.includes('/api/ingest'),
-    }),
-    autoTracePlugin({ idleMs: 1500, flushOnExport: true }),
-    protoethikPlugin(),
-    exporterPlugin(webhookExporter({ url: 'http://localhost:3000/api/ingest' })),
+    // Automatically intercepts fetch and XHR requests.
+    networkInstrumentationPlugin({ fetch: true, xhr: true }),
+    // Manages Trace lifecycle automatically.
+    autoTracePlugin({ idleMs: 1500 })
   ],
 });
+
+// Your application logic here.
 ```
 
-## Packages
+### 3. Deploy the Visualization Dashboard
 
-- `@protoethik-ai/core` — The Inspector (interceptors + collectors + ethics checks)
-- `@protoethik-ai/ui` — Shared UI components (Glass design system)
-- `@protoethik-ai/dashboard` — Next.js dashboard (App Router)
-- `@protoethik-ai/provider-openai-compatible` — Provider wrapper for OpenAI-compatible APIs
-- `@protoethik-ai/provider-ollama` — Provider wrapper for local Ollama
-
-## Quick start (local)
+To privately deploy the monitoring dashboard, clone the repository and execute the following commands:
 
 ```bash
+# When deploying to Vercel, set the root directory to `packages/@protoethik-ai/dashboard`.
 pnpm install
-pnpm dev
+pnpm build
+pnpm start
 ```
 
-Then open `http://localhost:3000`.
+---
 
-## Ingestion
+## ⚖️ Protoethik Transparency Score
 
-The dashboard exposes:
+Tylo-Lens introduces a pioneering, quantifiable transparency scoring system based on the **Protoethik** framework, assessing key dimensions:
 
-- `POST /api/ingest` — ingest a `LensTrace`
-- `GET /api/stream` — SSE stream of ingested traces
+*   **Clarity**: The explicitness of prompts and context.
+*   **PII Risk**: The weighted risk of sensitive data exposure.
+*   **Token Efficiency**: The resource cost of system operation.
 
-Example:
+---
 
-```bash
-curl -X POST http://localhost:3000/api/ingest \
-  -H 'content-type: application/json' \
-  -d '{"traceId":"demo","app":{"name":"demo"},"startedAt":"2025-01-01T00:00:00.000Z","spans":[]}'
-```
+## 🤝 Contribution & Governance
 
-## SDK usage (example)
+*   **RFC Process**: Any modifications to core data structures must follow the process outlined in the `rfcs/` directory.
+*   **Security First**: The SDK incorporates built-in data sanitization mechanisms, with PII masking enabled by default in production environments.
 
-```ts
-import { TyloLens } from '@protoethik-ai/core';
+---
 
-const lens = new TyloLens({
-  app: { name: 'my-app', environment: 'dev' },
-});
+## 📜 License
 
-// Wrap a model call (works with any LLM client)
-const run = lens.wrapLLM('openai:gpt-4.1', async () => {
-  return { outputText: 'hello', usage: { inputTokens: 10, outputTokens: 12 } };
-});
+MIT © 2025 [Protoethik](https://protoethik.com)
 
-await run({ prompt: 'Say hello' });
-console.log(lens.exportTrace());
-```
+---
+<div align="center">
 
-## Protoethik transparency score
+<div align="center" style="padding: 2rem 0; color: #666; font-size: 0.9rem;">
 
-Tylo-Lens includes a lightweight transparency score inspired by the **Protoethik** rules:
+**Made with ❤️ by [TyloAI](https://tyloai.com)**  
+**Part of the [Protoethik](https://protoethik.com) ecosystem**
+"Building AI that thinks deeply and acts responsibly."
 
-```
-T_score = (Σ(C_clarity · W_c) − Σ(P_pii · W_p)) / T_tokens
-```
+[GitHub](https://github.com/TyloAI) • [TyloAI](https://tyloai.com) • [Protoethik](https://protoethik.com)
+</div>
 
-The dashboard shows:
-
-- `T-score (0–100)` for human-friendly scanning
-- the raw score + breakdown for auditing
-
-## CLI (trace validation)
-
-Tylo-Lens ships a small CLI to validate trace payloads:
-
-```bash
-node @protoethik-ai/protoethik-ai/cli/bin/tylo-lens.js validate ./my-trace.json
-```
-
-## Examples
-
-- `examples/vanilla-js` — no framework
-- `examples/basic-mcp` — wrap MCP-style `request(method, params)`
-- `examples/nextjs-ai-sdk` — conceptual Next.js + AI SDK integration
-
-## Hall of Fame (coming soon)
-
-Community-made plugins will live here:
-
-- Provider plugins (Ollama, DeepSeek, local inference)
-- Exporters (Slack/Discord, files, databases)
-- Visualization extensions (custom node types, layouts)
-
-Want to be listed? Ship a plugin and open a PR.
-
-## Security & privacy
-
-Tylo-Lens can capture prompts/outputs, which may contain sensitive data.
-
-- Use PII redaction and retention controls in production.
-- Add auth to ingestion endpoints.
-- Prefer server-side ingestion (avoid exposing raw traces to browsers).
-
-## Governance
-
-- RFCs: `rfcs/README.md`
-- Issue templates: `.github/ISSUE_TEMPLATE`
-- Protoethik draft rules: `.github/linters/protoethik.rules.md`
-
-## License
-
-MIT
+</div>
