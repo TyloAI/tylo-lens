@@ -1,0 +1,22 @@
+{
+  "traceId": "trace_demo",
+  "app": { "name": "fixture", "environment": "test" },
+  "startedAt": "2025-01-01T00:00:00.000Z",
+  "spans": [
+    {
+      "id": "llm_demo",
+      "traceId": "trace_demo",
+      "kind": "llm",
+      "name": "llm.call",
+      "model": "demo:model",
+      "startTime": "2025-01-01T00:00:00.000Z",
+      "endTime": "2025-01-01T00:00:00.100Z",
+      "durationMs": 100,
+      "input": { "prompt": "hello" },
+      "output": { "text": "world" },
+      "usage": { "inputTokens": 1, "outputTokens": 1, "totalTokens": 2 },
+      "safety": { "pii": { "findings": [], "hasFindings": false }, "risk": "low" }
+    }
+  ]
+}
+

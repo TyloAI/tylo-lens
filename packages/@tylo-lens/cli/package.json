@@ -1,0 +1,15 @@
+{
+  "name": "@tylo-lens/cli",
+  "version": "0.0.0",
+  "description": "Tylo-Lens CLI tools (trace validator, utilities).",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "tylo-lens": "bin/tylo-lens.js"
+  },
+  "files": ["bin", "fixtures"],
+  "scripts": {
+    "lint": "node -c bin/tylo-lens.js"
+  }
+}
+
