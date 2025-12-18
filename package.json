@@ -1,0 +1,29 @@
+{
+  "name": "tylo-lens",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Tylo-Lens — an LLM application transparency dashboard (MCP-ready) for traces, tokens, latency, and compliance.",
+  "license": "MIT",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
+    "validate:trace": "node packages/@tylo-lens/cli/bin/tylo-lens.js validate",
+    "lint": "pnpm -r lint",
+    "format": "prettier . --check",
+    "format:write": "prettier . --write",
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @tylo-lens/dashboard dev"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.7",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.6.0"
+  }
+}

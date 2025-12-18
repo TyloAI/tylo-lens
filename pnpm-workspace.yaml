@@ -1,0 +1,3 @@
+packages:
+  - "packages/@tylo-lens/*"
+  - "examples/*"
